@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    image: crudbackend
+    build:
+      context: ./BACKEND-FULLSTACK-001
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+
+  frontend:
+    build:
+      context: ./FRONTEND-PATH  # Cambia esto a la ruta de tu frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
